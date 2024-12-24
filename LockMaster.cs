@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 using Oxide.Core;
@@ -28,8 +29,11 @@ namespace Oxide.Plugins
         {
             foreach (var entity in BaseNetworkable.serverEntities)
             {
-                UpdateEntityLockableState(entity);
-                UpdateEntityLockPosition(entity);
+                if (entity is StorageContainer container && container.OwnerID != 0)
+                {
+                    UpdateEntityLockableState(container);
+                    UpdateEntityLockPosition(container);
+                }
             }
         }
 
@@ -177,18 +181,18 @@ namespace Oxide.Plugins
             public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
             {
                 Vector3 vector3 = (Vector3)value;
-                
+
                 JObject jObject = new JObject
                 {
                     { "x", MathF.Round(vector3.x, 2) },
                     { "y", MathF.Round(vector3.y, 2) },
                     { "z", MathF.Round(vector3.z, 2) }
                 };
-                
+
                 jObject.WriteTo(writer);
             }
         }
-        
+
         private class QuaternionConverter : JsonConverter
         {
             public override bool CanConvert(Type objectType)
