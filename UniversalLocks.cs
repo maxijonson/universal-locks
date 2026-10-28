@@ -12,9 +12,9 @@ using Newtonsoft.Json.Converters;
 
 namespace Oxide.Plugins
 {
-    [Info("Lock Master Remastered", "MaxiJonson", "1.0.0")]
-    [Description("Rewrite of the Lock Master plugin by FastBurst")]
-    class LockMaster : RustPlugin
+    [Info("Universal Locks", "MaxiJonson", "1.0.0")]
+    [Description("Lock anything with a container")]
+    class UniversalLocks : RustPlugin
     {
         #region Vars
         #endregion
