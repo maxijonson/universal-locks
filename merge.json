@@ -1,0 +1,48 @@
+{
+  "Platform": "Oxide",
+  "Merge Settings": {
+    "Plugin Name": "UniversalLocks",
+    "Creator Mode": "Plugin",
+    "Namespace Override": "",
+    "Plugin Input Paths": [
+      "./src"
+    ],
+    "Plugin Output Paths": [
+      "./"
+    ],
+    "Reference Definitions": [],
+    "Requires Definitions": [],
+    "Define Definitions": [],
+    "Ignore Paths": [],
+    "Ignore Files": [],
+    "Ignore Namespaces": [
+      "UniversalLocksPlugin"
+    ],
+    "Code Style": {
+      "Indent Character": " ",
+      "Indent Char Amount": 4,
+      "Indent Multiplier": 1,
+      "New Line String": "\r\n",
+      "Write The Relative File Path In Region": false,
+      "Keep Code Comments": false
+    }
+  },
+  "Preprocessor Directive Settings": {
+    "Preprocessor Directives": []
+  },
+  "Compile Settings": {
+    "Assembly Paths": [
+      "./servers/oxide-production/publicized",
+      "./servers/oxide-production/RustDedicated_Data/Managed"
+    ],
+    "Ignore Paths": [
+      "./servers/oxide-production/RustDedicated_Data/Managed/x86",
+      "./servers/oxide-production/RustDedicated_Data/Managed/x64"
+    ],
+    "Ignore Files": [
+      "./servers/oxide-production/RustDedicated_Data/Managed/Newtonsoft.Json.dll",
+      "./servers/oxide-production/RustDedicated_Data/Managed/Assembly-CSharp.dll"
+    ],
+    "Compile Log Level (Hidden, Info, Warning, Error)": "Error"
+  }
+}

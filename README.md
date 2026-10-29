@@ -20,7 +20,7 @@ Currently, Universal Locks' support is pretty straightforward: if it has a conta
 
 ## Configuration
 
-The config file is `oxide/config/UniversalLocks.json` on Oxide and `carbon/configs/UniversalLocks.json` on Carbon. Player preferences are saved in `oxide/data/UniversalLocks.json` on Oxide and `carbon/data/UniversalLocks.json` on Carbon.
+The config file is `oxide/config/UniversalLocks.json` on Oxide and `carbon/configs/UniversalLocks.json` on Carbon.
 
 ```json
 {
