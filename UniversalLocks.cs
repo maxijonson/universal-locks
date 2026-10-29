@@ -89,10 +89,10 @@ namespace Oxide.Plugins
             [JsonProperty(PropertyName = "Lock all storage containers")]
             public bool LockAll { get; set; } = true;
 
-            [JsonProperty(PropertyName = "Exclude short names (When Lock all storage containers is disabled)")]
+            [JsonProperty(PropertyName = "Exclude short names (When Lock all storage containers is enabled)")]
             public HashSet<string> ExcludeShortNames { get; set; } = new HashSet<string> { "autoturret_deployed", "guntrap.deployed" };
 
-            [JsonProperty(PropertyName = "Include short names (When Lock all storage containers is enabled)")]
+            [JsonProperty(PropertyName = "Include short names (When Lock all storage containers is disabled)")]
             public HashSet<string> IncludeShortNames { get; set; } = new HashSet<string> { };
 
             [JsonProperty(PropertyName = "Lock configuration by short name")]
