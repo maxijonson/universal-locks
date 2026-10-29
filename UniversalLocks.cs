@@ -29,11 +29,7 @@ namespace Oxide.Plugins
         {
             foreach (var entity in BaseNetworkable.serverEntities)
             {
-                if (entity is StorageContainer container && container.OwnerID != 0)
-                {
-                    UpdateEntityLockableState(container);
-                    UpdateEntityLockPosition(container);
-                }
+                UpdateEntityLockableState(entity);
             }
         }
 
@@ -47,19 +43,22 @@ namespace Oxide.Plugins
         #region Functions
         private void UpdateEntityLockableState(BaseNetworkable entity)
         {
-            var storageEntity = entity as StorageContainer;
-            if (storageEntity == null) return;
+            var storageContainer = entity as StorageContainer;
+            var ioContainer = entity as ContainerIOEntity;
+            BaseEntity container = (BaseEntity)storageContainer ?? ioContainer;
+            if (container == null) return;
 
             // If the entity is not owned by a player, we don't want to make it lockable
-            if (storageEntity.OwnerID == 0) return;
+            if (container.OwnerID == 0) return;
 
-            var shortName = storageEntity.ShortPrefabName;
+            var shortName = container.ShortPrefabName;
             var lockable = Configuration.LockAll
                     ? !Configuration.ExcludeShortNames.Contains(shortName) // When LockAll, only lock if the short name is not in the exclude list
                     : Configuration.IncludeShortNames.Contains(shortName); // When not LockAll, only lock if the short name is in the include list
 
-            storageEntity.isLockable = lockable;
-            storageEntity.SendNetworkUpdate();
+            if (storageContainer != null) storageContainer.isLockable = lockable;
+            else ioContainer.isLockable = lockable;
+            container.SendNetworkUpdate();
         }
 
         private void UpdateEntityLockPosition(BaseNetworkable entity)
